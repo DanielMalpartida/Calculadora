@@ -14,6 +14,7 @@
 	<name>Calculadora</name>
 	<description>Calculadora Prueba</description>
 	<properties>
+		<tracer.version>1.0.0</tracer.version>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
@@ -28,9 +29,19 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>io.corp.calculator</groupId>
+			<artifactId>tracer</artifactId>
+			<version>${tracer.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
 			<artifactId>swagger-models</artifactId>
 			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.3.22</version>
 		</dependency>
 	</dependencies>
 
@@ -61,6 +72,29 @@
 							</configOptions>
 						</configuration>
 					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install-external-jar</id>
+						<phase>clean</phase>
+						<configuration>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>io.corp.calculator</groupId>
+							<artifactId>tracer</artifactId>
+							<version>${tracer.version}</version>
+							<file>${project.basedir}/externalLibs/tracer-1.0.0.jar</file>
+							<packaging>jar</packaging>
+							<generatePom>true</generatePom>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+
 				</executions>
 			</plugin>
 		</plugins>

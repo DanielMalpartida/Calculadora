@@ -3,11 +3,14 @@ package com.prueba.Calculadora;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.SQLOutput;
+
 @SpringBootApplication
-public class CalculadoraApplication {
+public class CalculatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CalculadoraApplication.class, args);
+		SpringApplication.run(CalculatorApplication.class, args);
+
 	}
 
 }
