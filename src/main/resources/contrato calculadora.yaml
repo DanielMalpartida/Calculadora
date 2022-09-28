@@ -1,0 +1,158 @@
+openapi: 3.0.2
+info:
+  title: Contrato Calculadora
+  version: '1.0'
+  description: >-
+   Conjunto de Apis para la Calculadora
+
+
+tags:
+  - name: "Suma"
+  - name: "Resta"
+servers:
+  - url: https://localhost:8081
+    description: >-
+      direccion local de api 
+  - url: https://10.0.0.10:8080/v1
+    description: direccion produccion
+
+
+paths:
+  #Suma   -----------------------------------------------------------------------------------------------------------
+  /Suma/{numero_1}/{numero_2}:
+    get:
+      description: Obtiene la suma de dos numeros que se pase por parametro
+      tags:
+        - "Suma"
+      parameters:
+        - $ref: '#/components/parameters/Numero_1'
+        - $ref: '#/components/parameters/Numero_2'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suma'
+        '400':
+         description: KO
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorAplicacion'
+        '404':
+         description: KO
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorFuncional'
+        '500':
+         description: KO
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorServidorWeb'
+  #Resta   -----------------------------------------------------------------------------------------------------------
+  /Resta/{numero_1}/{numero_2}:
+    get:
+      description: Obtiene la resta de dos numeros que se pase por parametro
+      tags:
+        - "Resta"
+      parameters:
+        - $ref: '#/components/parameters/Numero_1'
+        - $ref: '#/components/parameters/Numero_2'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resta'
+        '400':
+         description: KO
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorAplicacion'
+        '404':
+         description: KO
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorFuncional'
+        '500':
+         description: KO
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorServidorWeb'
+  
+  # COMPONENTS----------------------------------------------------------------------------------------------------------
+components:
+  parameters:
+   Numero_1:
+      name: numero_1
+      example: 2
+      description: el primer numero de la operacion 
+      in: path
+      required: true
+      schema:
+        type: integer
+   Numero_2:
+      name: numero_2
+      example: 1
+      description: el segundo numero de la operacion 
+      in: path
+      required: true
+      schema:
+        type: integer
+  schemas:
+    Suma:
+      type: object
+      properties:
+        restulado:
+        
+          type: integer
+          description: suma total del resultado
+    Resta:
+      type: object
+      properties:
+        restulado:
+          type: integer
+          description: resta total del resultado
+    ErrorFuncional:
+      type: object
+      properties:
+        code_error:
+          type: string
+          description: codificacion error interno
+        descripcion_error:
+          type: string
+          description: descripcion corta error
+      example:
+        code_error: "404"
+        descripcion_error: "error fucional "
+    ErrorAplicacion:
+      type: object
+      properties:
+        code_error:
+          type: string
+          description: codificacion error interno
+        descripcion_error:
+          type: string
+          description: descripcion corta error
+      example:
+        code_error: "400"
+        descripcion_error: "fallo conexion base de datos"
+    ErrorServidorWeb:
+      type: object
+      properties:
+        code_error:
+          type: string
+          description: codificacion error interno
+        descripcion_error:
+          type: string
+          description: descripcion corta error
+      example:
+        code_error: "500"
+        descripcion_error: "algo ha ido mal en el servidor del sitio web"
