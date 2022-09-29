@@ -1,9 +1,7 @@
-package com.prueba.Calculadora;
+package com.prueba.Calculator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.sql.SQLOutput;
 
 @SpringBootApplication
 public class CalculatorApplication {
