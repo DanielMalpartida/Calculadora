@@ -1,14 +1,15 @@
-package com.prueba.Calculator.service;
+package com.prueba.Calculator.service.impl;
 
 
 
+import com.prueba.Calculator.service.ICalculaltorService;
 import io.corp.calculator.TracerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class CalculatorService implements ICalcualtorService{
+public class CalculatorService implements ICalculaltorService {
 
 
     private final TracerImpl tracer;

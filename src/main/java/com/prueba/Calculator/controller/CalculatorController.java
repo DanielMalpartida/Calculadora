@@ -2,7 +2,7 @@ package com.prueba.Calculator.controller;
 
 
 
-import com.prueba.Calculator.service.CalculatorService;
+import com.prueba.Calculator.service.impl.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value="/calculator")
-public class controller {
+public class CalculatorController {
 
     @Autowired
     private CalculatorService calculatorService;

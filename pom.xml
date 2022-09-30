@@ -69,7 +69,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/contrato calculadora.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/contractcalculator.yaml</inputSpec>
 							<language>spring</language>
 							<output>${project.build.directory}/generated-resources</output>
 							<generateSupportingFiles>false</generateSupportingFiles>
